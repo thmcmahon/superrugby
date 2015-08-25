@@ -1,10 +1,11 @@
 Package: superrugby
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Super Rugby Results Dataset
 Version: 0.1
 Date: 2015-08-25
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Thomas McMahon
+Maintainer: Thomas McMahon <thmcmahon@gmail.com>
+Description: Results of all Super Rugby matches from 1996 - 2015. Thanks to Kevin Lassen for meticulously collating the original database. These results were scraped from http://www.lassen.co.nz/.
+License: MIT
 LazyData: TRUE
+URL: http://github.com/thmcmahon/superrugby
