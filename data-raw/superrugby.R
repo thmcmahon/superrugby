@@ -42,12 +42,12 @@ superrugby <- superrugby %>%
            sep = '-', convert = TRUE) %>%
   separate(col = tries, into = c('home_tries', 'away_tries'),
            sep = ':', convert = TRUE) %>%
-  separate(col = points, into = c('home_goals', 'away_goals'),
+  separate(col = points, into = c('home_points', 'away_points'),
            sep = "-", convert = TRUE) %>%
   # Reorganise and rename
   select(comp, season, round, date, time, country = `in`, city = adv, home,
-         away, home_score, away_score, home_tries, away_tries, home_goals,
-         away_goals)
+         away, home_score, away_score, home_tries, away_tries, home_points,
+         away_points)
 
 # Add a results column
 superrugby$result <-
