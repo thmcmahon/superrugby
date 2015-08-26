@@ -11,6 +11,15 @@ get_sr_table <- function(year) {
   table[[2]] # element 2 is the actual results, the others are metadata
 }
 
+
+fix_team_name <- function(x, old_name, new_name) {
+  # Changes a vector of team names from an old name to a new name
+  x[x == old_name] <- new_name
+  x <- droplevels(x)
+  return(as.factor(x))
+}
+
+
 if (!file.exists('data-raw/superrugby_raw.csv')) {
   # If the dataset is not present then download for each year of the
   # professional era and save the dataset as a csv file
@@ -31,6 +40,9 @@ superrugby$season <- as.factor(year(superrugby$date))
 
 # Use the IOC encoding for country
 levels(superrugby$`in`) <- c('AUS', 'NZL', 'RSA')
+
+# Fix some broken encodings
+superrugby$adv[superrugby$adv == 'Ivercargill'] <- 'Invercargill' # misspelt
 
 # Reorganise and normalise merged columns
 superrugby <- superrugby %>%
@@ -57,5 +69,35 @@ superrugby$result <-
          )
 
 superrugby$result <- as.factor(superrugby$result)
+
+# Fix team names
+# Stormers
+superrugby[c('home', 'away')] <-
+  lapply(superrugby[c('home', 'away')],
+         fix_team_name, 'Western Province', 'Stormers')
+
+# Sharks
+superrugby[c('home', 'away')] <-
+  lapply(superrugby[c('home', 'away')],
+         fix_team_name, 'Natal', 'Sharks')
+
+# Lions
+superrugby[c('home', 'away')] <-
+  lapply(superrugby[c('home', 'away')],
+         fix_team_name, 'Northern Transvaal', 'Lions')
+
+superrugby[c('home', 'away')] <-
+  lapply(superrugby[c('home', 'away')],
+         fix_team_name, 'Transvaal', 'Lions')
+
+superrugby[c('home', 'away')] <-
+  lapply(superrugby[c('home', 'away')],
+         fix_team_name, 'Gauteng Lions', 'Lions')
+
+# Cheetahs
+superrugby[c('home', 'away')] <-
+  lapply(superrugby[c('home', 'away')],
+         fix_team_name, 'Free State', 'Cheetahs')
+
 
 save(superrugby, file = 'data/superrugby.rdata', compress = "xz")
