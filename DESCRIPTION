@@ -7,6 +7,7 @@ Date: 2015-08-25
 Author: Thomas McMahon
 Maintainer: Thomas McMahon <thmcmahon@gmail.com>
 Description: Results of all Super Rugby matches from 1996 - 2015. Thanks to Kevin Lassen for meticulously collating the original database. These results were scraped from http://www.lassen.co.nz/.
-License: MIT
+License: CC0
 LazyData: TRUE
 URL: http://github.com/thmcmahon/superrugby
+Suggests: testthat
