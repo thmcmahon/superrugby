@@ -12,7 +12,7 @@
 #'
 #' @format A data frame with sixteen variables:
 #' \describe{
-#'  \item{comp}{Competition name e.g. Super 12.}
+#'  \item{comp}{Competition name e.g. S12 for Super 12.}
 #'  \item{season}{Competition year}
 #'  \item{round}{Competition round}
 #'  \item{date}{Fixture date}
